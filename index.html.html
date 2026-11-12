@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genios del Futuro – Club de Aprendizaje</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --indigo:    #3730A3;
+      --indigo-lt: #4F46E5;
+      --indigo-bg: #EEF2FF;
+      --amber:     #F59E0B;
+      --amber-lt:  #FCD34D;
+      --emerald:   #059669;
+      --rose:      #E11D48;
+      --text:      #1E1B4B;
+      --muted:     #6B7280;
+      --white:     #FFFFFF;
+      --surface:   #F8F7FF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .hero {
+      background: var(--indigo);
+      position: relative;
+      overflow: hidden;
+      padding: 20px 24px 64px;
+      text-align: center;
+    }
+
+    /* star field */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 10% 15%, rgba(255,255,255,.55) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 8%,  rgba(255,255,255,.45) 0%, transparent 100%),
+        radial-gradient(2px 2px   at 55% 22%,   rgba(255,255,255,.65) 0%, transparent 100%),
+        radial-gradient(1px 1px   at 30% 40%,   rgba(255,255,255,.35) 0%, transparent 100%),
+        radial-gradient(2px 2px   at 72% 50%,   rgba(255,255,255,.5)  0%, transparent 100%),
+        radial-gradient(1px 1px   at 15% 65%,   rgba(255,255,255,.3)  0%, transparent 100%),
+        radial-gradient(2px 2px   at 90% 75%,   rgba(255,255,255,.45) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 42% 80%, rgba(255,255,255,.4)  0%, transparent 100%),
+        radial-gradient(1px 1px   at 65% 90%,   rgba(255,255,255,.3)  0%, transparent 100%),
+        radial-gradient(2px 2px   at 5%  88%,   rgba(255,255,255,.5)  0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--rose);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      position: relative;
+      animation: pulse-badge 2s infinite;
+    }
+    @keyframes pulse-badge {
+      0%,100% { box-shadow: 0 0 0 0 rgba(225,29,72,.5); }
+      50%      { box-shadow: 0 0 0 8px rgba(225,29,72,0); }
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(32px, 7vw, 60px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.12;
+      max-width: 760px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber-lt);
+    }
+
+    .hero p.lead {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: rgba(255,255,255,.85);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+    .btn-wa svg { flex-shrink: 0; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.12);
+      border: 2px solid rgba(255,255,255,.4);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 15px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.22); }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: clamp(24px, 5vw, 60px);
+      margin-top: 48px;
+      position: relative;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      color: var(--amber-lt);
+      line-height: 1;
+    }
+    .hero-stat span {
+      font-size: 13px;
+      color: rgba(255,255,255,.7);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    /* ─── URGENCY STRIP ────────────────────────────────── */
+    .urgency-strip {
+      background: var(--amber);
+      padding: 14px 24px;
+      text-align: center;
+    }
+    .urgency-strip p {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .urgency-strip span { color: var(--rose); }
+
+    /* ─── SECTION WRAPPER ──────────────────────────────── */
+    .section { padding: 72px 24px; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      color: var(--indigo-lt);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(26px, 4.5vw, 38px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    /* ─── PAIN SECTION ─────────────────────────────────── */
+    .pain { background: var(--surface); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px 24px;
+      border-left: 4px solid var(--rose);
+    }
+    .pain-card .icon { font-size: 32px; margin-bottom: 12px; }
+    .pain-card p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+    /* ─── WHY GENIOS ───────────────────────────────────── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 40px;
+    }
+    @media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+
+    .why-visual {
+      background: var(--indigo-bg);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .why-big-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 80px;
+      font-weight: 800;
+      color: var(--indigo);
+      line-height: 1;
+    }
+    .why-big-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--indigo-lt);
+      margin-top: 8px;
+    }
+    .why-divider { width: 40px; height: 3px; background: var(--amber); margin: 16px auto; border-radius: 2px; }
+
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .why-list li::before {
+      content: '✦';
+      color: var(--emerald);
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ─── AREAS ────────────────────────────────────────── */
+    .areas { background: var(--indigo); }
+    .areas h2 { color: var(--white); }
+    .areas .section-label { color: var(--amber-lt); }
+    .areas-subtitle { color: rgba(255,255,255,.75); font-size: 17px; margin-bottom: 40px; max-width: 560px; }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .area-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 32px 24px;
+      transition: background .2s, transform .2s;
+    }
+    .area-card:hover { background: rgba(255,255,255,.14); transform: translateY(-4px); }
+    .area-icon { font-size: 42px; margin-bottom: 16px; }
+    .area-card h3 { color: var(--amber-lt); font-size: 20px; margin-bottom: 10px; }
+    .area-card p { color: rgba(255,255,255,.7); font-size: 14px; line-height: 1.65; }
+
+    /* ─── RESULTS ──────────────────────────────────────── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .result-card {
+      background: var(--indigo-bg);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .result-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--indigo);
+      line-height: 1;
+    }
+    .result-desc { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
+    /* ─── PRICING ──────────────────────────────────────── */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+      align-items: start;
+    }
+
+    .price-card {
+      background: var(--white);
+      border: 2px solid var(--indigo-bg);
+      border-radius: 24px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-card.featured {
+      border-color: var(--indigo);
+      background: var(--indigo);
+      color: var(--white);
+    }
+    .price-card.featured h3 { color: var(--amber-lt); }
+
+    .price-tag {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .price-amount {
+      font-family: 'Poppins', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      margin: 12px 0 4px;
+    }
+    .price-card.featured .price-amount { color: var(--white); }
+    .price-period { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .price-card.featured .price-period { color: rgba(255,255,255,.65); }
+
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .price-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .price-features li::before {
+      content: '✓';
+      background: var(--emerald);
+      color: white;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .price-card.featured .price-features li { color: rgba(255,255,255,.85); }
+
+    .price-note {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+    .price-card.featured .price-note { color: rgba(255,255,255,.55); }
+
+    .btn-cta {
+      display: block;
+      width: 100%;
+      background: var(--amber);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,.35); }
+
+    .btn-cta-outline {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 2px solid var(--indigo);
+      color: var(--indigo);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      transition: background .15s;
+    }
+    .btn-cta-outline:hover { background: var(--indigo-bg); }
+
+    .value-note {
+      background: var(--indigo-bg);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--indigo);
+      text-align: center;
+    }
+    .value-note strong { font-family: 'Poppins', sans-serif; }
+
+    /* ─── VACACIONAL ───────────────────────────────────── */
+    .vacacional { background: #FFF7ED; }
+    .vac-box {
+      background: var(--white);
+      border: 2px solid var(--amber);
+      border-radius: 24px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .vac-box::before {
+      content: '🌟';
+      position: absolute;
+      font-size: 120px;
+      top: -20px; right: -20px;
+      opacity: .07;
+      pointer-events: none;
+    }
+    .vac-dates {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: var(--amber);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .vac-box h2 { font-size: clamp(24px, 4vw, 34px); margin-bottom: 12px; }
+    .vac-box p { color: var(--muted); max-width: 500px; margin: 0 auto 32px; font-size: 16px; }
+    .vac-spots {
+      display: inline-block;
+      background: var(--rose);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 6px 18px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .vac-box .btn-wa { font-size: 17px; padding: 16px 36px; }
+
+    /* ─── TESTIMONIAL / PROMISE ────────────────────────── */
+    .promise { background: var(--indigo-bg); }
+    .promise-inner { max-width: 680px; }
+    .promise blockquote {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--indigo);
+      line-height: 1.4;
+      border-left: 4px solid var(--amber);
+      padding-left: 24px;
+      margin: 24px 0;
+    }
+    .promise p { color: var(--muted); font-size: 15px; }
+    .promise strong { color: var(--text); }
+
+    /* ─── FAQ ──────────────────────────────────────────── */
+    .faq-list { display: flex; flex-direction: column; gap: 2px; margin-top: 36px; }
+    .faq-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E5E7EB;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 24px;
+      background: var(--white);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      transition: background .15s;
+    }
+    .faq-q:hover { background: var(--indigo-bg); }
+    .faq-q .arrow {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      background: var(--indigo-bg);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .2s;
+      font-size: 12px;
+    }
+    .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      background: var(--white);
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ─── FOOTER CTA ───────────────────────────────────── */
+    .footer-cta {
+      background: var(--indigo);
+      text-align: center;
+      padding: 72px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(79,70,229,.5) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .footer-cta h2 {
+      color: var(--white);
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 12px;
+    }
+    .footer-cta p {
+      color: rgba(255,255,255,.75);
+      font-size: 17px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .footer-cta .btn-wa {
+      font-size: 18px;
+      padding: 18px 40px;
+      position: relative;
+    }
+
+    .footer-nav {
+      background: #12104A;
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-nav strong { color: rgba(255,255,255,.65); }
+
+    /* ─── FLOATING WA ──────────────────────────────────── */
+    .float-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.5);
+      text-decoration: none;
+      transition: transform .15s;
+    }
+    .float-wa:hover { transform: scale(1.1); }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero-stats { gap: 20px; }
+      .pricing-cards { grid-template-columns: 1fr; }
+      .vac-box { padding: 32px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ═══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-badge">
+    📅 Vacacional: 23 Nov – 4 Dic · ¡Cupos limitados!
+  </div>
+
+  <h1>Tu hijo merece el mejor<br><em>comienzo académico</em></h1>
+
+  <p class="lead">
+    Un espacio donde los niños de 4 a 8 años aprenden a leer, escribir, pensar
+    matemáticamente e iniciarse en inglés — todo en grupos pequeños y con acompañamiento personalizado.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="https://wa.me/573042035950?text=Hola!%20Me%20interesa%20Genios%20del%20Futuro" class="btn-wa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Quiero inscribir a mi hijo
+    </a>
+    <a href="#programa" class="btn-secondary">Ver el programa ↓</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong>6h</strong>
+      <span>por semana</span>
+    </div>
+    <div class="hero-stat">
+      <strong>4–8</strong>
+      <span>años de edad</span>
+    </div>
+    <div class="hero-stat">
+      <strong>4</strong>
+      <span>áreas de aprendizaje</span>
+    </div>
+    <div class="hero-stat">
+      <strong>Grupos<br>pequeños</strong>
+      <span>atención cercana</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ URGENCY ═════════════════════════════════════════════ -->
+<div class="urgency-strip">
+  <p>⚡ El programa permanente inicia el <span>4 de enero de 2027</span> — inscripciones abiertas ahora</p>
+</div>
+
+<!-- ══ PAIN ════════════════════════════════════════════════ -->
+<section class="section pain">
+  <div class="section-inner">
+    <div class="section-label">Lo que preocupa a los papás</div>
+    <h2>¿Te suena familiar alguna de estas situaciones?</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">📚</div>
+        <h3>Miedo a quedarse atrás</h3>
+        <p>Primer grado se acerca y no sabes si tu hijo va a estar listo para aprender a leer y escribir con sus compañeros.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🧮</div>
+        <h3>Dificultades con los números</h3>
+        <p>Notas que las matemáticas le cuestan trabajo y sientes que necesita más práctica de la que el colegio puede darle.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🌍</div>
+        <h3>El inglés cada vez más importante</h3>
+        <p>Sabes que el inglés abre puertas, pero no sabes por dónde empezar ni cuándo es el momento indicado para tu hijo.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">⏱️</div>
+        <h3>Tiempo libre sin aprovechar</h3>
+        <p>Las vacaciones son largas y quieres que tu hijo haga algo productivo y estimulante, no solo pantallas todo el día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY GENIOS ══════════════════════════════════════════ -->
+<section class="section" id="programa">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Por qué funciona</div>
+        <h2>Atención personalizada, resultados visibles</h2>
+        <p style="color:var(--muted); font-size:15px; margin-bottom:24px; line-height:1.7;">
+          No es un salón de clases masivo donde tu hijo se pierde entre los demás.
+          Trabajamos en grupos pequeños para que cada niño reciba el acompañamiento
+          exacto que necesita según su ritmo y nivel.
+        </p>
+        <ul class="why-list">
+          <li>Tres encuentros semanales de 2 horas cada uno — constancia sin agotamiento</li>
+          <li>Actividades diseñadas para cada rango de edad, no contenido genérico</li>
+          <li>Seguimiento al proceso individual de cada niño, con reporte a papás</li>
+          <li>Metodología lúdica: aprenden jugando, sin presión ni estrés</li>
+          <li>Material de apoyo pedagógico incluido sin costo adicional</li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="why-big-num">3×2</div>
+        <div class="why-divider"></div>
+        <div class="why-big-label">tres clases de dos horas<br>cada semana</div>
+        <p style="font-size:13px; color:var(--muted); margin-top:16px;">
+          Lunes · Miércoles · Viernes<br>
+          2:00 pm – 4:00 pm
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AREAS ═══════════════════════════════════════════════ -->
+<section class="section areas">
+  <div class="section-inner">
+    <div class="section-label">Qué aprenden</div>
+    <h2>Cuatro áreas, un solo objetivo: que tu hijo brille</h2>
+    <p class="areas-subtitle">
+      Cada sesión trabaja estas áreas de forma integrada y dinámica,
+      adaptada a la edad y nivel de cada niño.
+    </p>
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-icon">📖</div>
+        <h3>Lectura</h3>
+        <p>Reconocimiento de letras, formación de palabras, comprensión lectora y fluidez. Que lean solos, con confianza.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">✏️</div>
+        <h3>Escritura</h3>
+        <p>Trazos, motricidad fina, construcción de palabras y producción de pequeños textos con sentido.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🔢</div>
+        <h3>Matemáticas</h3>
+        <p>Conteo, operaciones básicas y pensamiento lógico a través de juegos y retos concretos.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🌎</div>
+        <h3>Inglés</h3>
+        <p>Vocabulario, expresiones cotidianas, canciones y juegos para que el idioma sea natural y divertido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROMISE ═════════════════════════════════════════════ -->
+<section class="section promise">
+  <div class="section-inner promise-inner">
+    <div class="section-label">Nuestra promesa</div>
+    <blockquote>"Cada niño tiene un genio adentro. Nuestra tarea es ayudarlo a descubrirlo."</blockquote>
+    <p>
+      En <strong>Transformando mi Realidad</strong> creemos que el aprendizaje temprano,
+      acompañado con amor y pedagogía, transforma el futuro. No vendemos clases:
+      construimos bases sólidas para que tu hijo llegue al colegio seguro, curioso y listo para aprender.
+    </p>
+  </div>
+</section>
+
+<!-- ══ RESULTS ═════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-label">Lo que gana tu hijo</div>
+    <h2>Habilidades concretas, no promesas vacías</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-num">📝</div>
+        <div class="result-desc"><strong>Leerá sus primeras palabras</strong> y pequeñas frases completas</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">🔢</div>
+        <div class="result-desc"><strong>Sumará y restará</strong> con confianza y sin ayuda</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">🌍</div>
+        <div class="result-desc"><strong>Responderá en inglés</strong> preguntas básicas del día a día</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">💪</div>
+        <div class="result-desc"><strong>Llegará al colegio</strong> con confianza y base académica sólida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ════════════════════════════════════════════ -->
+<section class="section" style="background:var(--surface);" id="precios">
+  <div class="section-inner">
+    <div class="section-label">Inversión</div>
+    <h2>Un plan accesible para el futuro de tu hijo</h2>
+    <div class="pricing-cards">
+
+      <div class="price-card">
+        <h3>Vacacional de Aprendizaje</h3>
+        <div class="price-tag">Noviembre 2026</div>
+        <div class="price-amount">$75.000</div>
+        <div class="price-period">pago único · 2 semanas completas</div>
+        <ul class="price-features">
+          <li>6 sesiones (23 nov al 4 dic)</li>
+          <li>2 horas por sesión</li>
+          <li>Las 4 áreas de aprendizaje</li>
+          <li>Material pedagógico incluido</li>
+          <li>Grupos reducidos</li>
+        </ul>
+        <a href="https://wa.me/573042035950?text=Hola!%20Quiero%20inscribir%20a%20mi%20hijo%20en%20el%20Vacacional%20Genios%20del%20Futuro" class="btn-cta-outline">Inscribir al vacacional</a>
+        <p class="price-note">📅 Inicia: lunes 23 de noviembre</p>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-tag">Programa permanente</div>
+        <h3>Club de Aprendizaje</h3>
+        <div class="price-amount">$75.000</div>
+        <div class="price-period">quincenal · desde enero 2027</div>
+        <ul class="price-features">
+          <li>3 encuentros semanales</li>
+          <li>2 horas por encuentro</li>
+          <li>Lectura y escritura</li>
+          <li>Pensamiento matemático</li>
+          <li>Iniciación al inglés</li>
+          <li>Material de apoyo incluido</li>
+          <li>Seguimiento personalizado</li>
+        </ul>
+        <a href="https://wa.me/573042035950?text=Hola!%20Quiero%20inscribir%20a%20mi%20hijo%20en%20el%20Club%20de%20Aprendizaje%20Genios%20del%20Futuro" class="btn-cta">Apartar mi cupo</a>
+        <p class="price-note">📅 Inicio: 4 de enero de 2027</p>
+      </div>
+
+    </div>
+
+    <div class="value-note">
+      <strong>¿Cuánto es eso realmente?</strong> $75.000 quincenales equivalen a
+      <strong>~$6.000 por hora</strong> de aprendizaje personalizado —
+      difícilmente encontrarás algo de mayor valor para el futuro de tu hijo.
+    </div>
+  </div>
+</section>
+
+<!-- ══ VACACIONAL HIGHLIGHT ════════════════════════════════ -->
+<section class="section vacacional">
+  <div class="section-inner">
+    <div class="vac-box">
+      <div class="vac-dates">📅 23 de noviembre al 4 de diciembre</div>
+      <h2>Vacacional de Aprendizaje:<br>el mejor plan para esta temporada</h2>
+      <p>
+        Dos semanas de aventura educativa donde tu hijo aprende, juega y desarrolla
+        habilidades clave. El punto de partida perfecto antes del año escolar.
+      </p>
+      <div class="vac-spots">⚠️ Cupos muy limitados — grupos pequeños</div>
+      <br>
+      <a href="https://wa.me/573042035950?text=Hola!%20Me%20interesa%20el%20Vacacional%20Genios%20del%20Futuro%20del%2023%20de%20noviembre" class="btn-wa" style="display:inline-flex;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribir por WhatsApp ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ═════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-label">Preguntas frecuentes</div>
+    <h2>Lo que los papás suelen preguntar</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Mi hijo necesita saber leer para ingresar?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">No. El programa está diseñado para niños en etapa de iniciación. Trabajamos desde el reconocimiento de letras hasta la lectura fluida, según el nivel de cada niño. No importa en qué punto esté tu pequeño — lo recibimos donde está y lo acompañamos a avanzar.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuántos niños hay por grupo?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">Trabajamos en grupos pequeños para garantizar atención cercana y personalizada. Esto nos permite adaptar las actividades al ritmo y nivel de cada niño, algo imposible en un grupo numeroso.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Dónde se desarrollan las clases?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">Las clases son presenciales en nuestras instalaciones. Escríbenos por WhatsApp para darte la dirección exacta y coordinar una visita antes de inscribir a tu hijo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Puedo inscribir solo para el vacacional sin compromiso de continuar?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">¡Claro! El Vacacional (23 nov – 4 dic) es independiente del programa permanente. Es una manera perfecta para que tu hijo conozca la dinámica y te enamores de los resultados. Muchos papás que empiezan con el vacacional deciden continuar en enero — ¡pero sin presión!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo sé que mi hijo está progresando?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">Hacemos seguimiento al proceso de aprendizaje de cada niño y te mantenemos informado. No te enterarás solo en un boletín de notas al final — estarás al tanto de cada avance durante todo el proceso.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER CTA ══════════════════════════════════════════ -->
+<section class="footer-cta">
+  <h2>El primer paso para el futuro de tu hijo es hoy</h2>
+  <p>Escríbenos ahora y te contamos todo. Sin compromiso, sin presión.</p>
+  <a href="https://wa.me/573042035950?text=Hola!%20Me%20interesa%20Genios%20del%20Futuro.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" class="btn-wa">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    Pedir información por WhatsApp
+  </a>
+</section>
+
+<footer class="footer-nav">
+  <strong>Genios del Futuro – Club de Aprendizaje</strong><br>
+  Transformando mi Realidad · Lunes, miércoles y viernes · 2:00 – 4:00 pm · Niños de 4 a 8 años
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/573042035950?text=Hola!%20Me%20interesa%20Genios%20del%20Futuro" class="float-wa" title="Escríbenos por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
